@@ -9,7 +9,6 @@ import io.netty.channel.ChannelOption;
 import io.netty.channel.epoll.EpollChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;
-import jdk.jfr.ContentType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -94,6 +93,8 @@ public class CustomerServiceImpl implements CustomerService {
             products.forEach(x -> {
                 String producName = this.getProductName(x.getId());
                 x.setProductName(producName);
+            List<?> transactions = this.getTransaction(customer.getIban());
+            customer.setTransactions(transactions);
             });
         }
         return customer;
@@ -112,5 +113,20 @@ public class CustomerServiceImpl implements CustomerService {
                 .retrieve().bodyToMono(JsonNode.class).block();
         String name = block.get("name").asText();
         return name;
+    }
+
+    private List<?> getTransaction(String iban){
+        log.info("llamado a seervicio externo buscar transacciones por iban");
+        log.info("url : " + "http://localhost:8082/api/v1/paymentchain/transactions/" + iban);
+        WebClient build = webClientBuilder.clientConnector(new ReactorClientHttpConnector(client))
+                .baseUrl("http://localhost:8082/api/v1/paymentchain/transactions")
+                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .build();
+        List<?> transactions = build.method(HttpMethod.GET).uri(uriBuilder ->  uriBuilder
+            .path("/customer/transactions")
+                .queryParam("ibanAccount", iban)
+                .build())
+                .retrieve().bodyToFlux(Object.class).collectList().block();
+        return transactions;
     }
 }

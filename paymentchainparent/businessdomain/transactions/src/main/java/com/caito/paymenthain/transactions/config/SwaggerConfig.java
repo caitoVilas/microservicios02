@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * author caito Vilas
+ * @author caito Vilas
  */
 
 @Configuration
@@ -16,7 +16,7 @@ public class SwaggerConfig {
     public GroupedOpenApi api(){
         return GroupedOpenApi.builder()
                 .group("transactions")
-                .packagesToScan("com.caito.paymentchain.transactions")
+                .packagesToScan("com.caito.paymenthain.transactions")
                 .build();
     }
 
