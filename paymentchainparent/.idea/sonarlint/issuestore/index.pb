@@ -1,8 +1,6 @@
 
 é
 ^businessdomain/customer/src/main/java/com/caito/paymentchain/customer/CustomerApplication.java,c\5\c5a292b122e2895236b90053239fded292fb5b1f
-O
-businessdomain/customer/pom.xml,b\1\b1fc31afd871d2888e6b72b1120e3ca02b20d75f
 G
 infraestructure/pom.xml,0\6\06444eae0af3ad81bcdeeaa3410a83cc2331ca1a
 N
@@ -13,8 +11,6 @@ Wbusinessdomain/product/src/main/java/com/caito/paymentchain/product/entity/Prod
 ebusinessdomain/product/src/main/java/com/caito/paymentchain/product/repository/ProductRepository.java,8\f\8fddaa4fa7fb4fd7b2c6ce6ff246c1dba273bf8d
 ò
 hbusinessdomain/product/src/main/java/com/caito/paymentchain/product/service/contract/ProductService.java,d\e\de38c8602cc17f3f8eb09b907b5a4e9a4469e213
-è
-_businessdomain/customer/src/main/java/com/caito/paymentchain/customer/config/SwaggerConfig.java,d\4\d45aa81549dfb6e493200fe7334d7934aed3c2b0
 ç
 ]businessdomain/product/src/main/java/com/caito/paymentchain/product/config/SwaggerConfig.java,e\d\ed923bf99c7e7b51282c974d0ee8a6d71f9e0fe1
 ò
