@@ -63,5 +63,6 @@
 
     <modules>
         <module>customer</module>
+        <module>product</module>
     </modules>
 </project>
