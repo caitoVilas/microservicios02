@@ -45,4 +45,12 @@ public class CustomerController {
         customerService.delete(id);
         return ResponseEntity.ok(null);
     }
+
+    @GetMapping("/full")
+    public ResponseEntity<Customer> getFull(@RequestParam String code){
+        Customer customer = customerService.getFull(code);
+        if (customer == null)
+            return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(customer);
+    }
 }
