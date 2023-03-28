@@ -1,0 +1,19 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: CONFIG-SERVER
+  security:
+    user:
+      name: admin
+      password: admin
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  cloud:
+    config:
+      server:
+        git:
+          uri: D:\workspace\microservicios02\paymentchainparent\config-server-repo
+          clone-on-start: start

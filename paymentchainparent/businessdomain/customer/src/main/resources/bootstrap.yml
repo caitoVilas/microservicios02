@@ -1,0 +1,24 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: CUSTOMER-SERVICE
+
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger.html
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

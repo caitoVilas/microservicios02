@@ -102,12 +102,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     private String getProductName(Long id){
         log.info("llamando servicio externo buscar nombre de producto");
-        log.info("url : " + "http://localhost:8083/api/v1/paymentchain/products/" + id);
+        log.info("url : " + "http://PRODUCT-SERVICE/api/v1/paymentchain/products/" + id);
         WebClient build = webClientBuilder.clientConnector(new ReactorClientHttpConnector(client))
-                .baseUrl("http://localhost:8083/api/v1/paymentchain/products")
+                .baseUrl("http://PRODUCT-SERVICE/api/v1/paymentchain/products")
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .defaultUriVariables(Collections.singletonMap("url",
-                        "http://localhost:8083/api/v1/paymentchain/products"))
+                        "http://PRODUCT-SERVICE/api/v1/paymentchain/products"))
                 .build();
         JsonNode block = build.method(HttpMethod.GET).uri("/" + id)
                 .retrieve().bodyToMono(JsonNode.class).block();
@@ -117,9 +117,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     private List<?> getTransaction(String iban){
         log.info("llamado a seervicio externo buscar transacciones por iban");
-        log.info("url : " + "http://localhost:8082/api/v1/paymentchain/transactions/" + iban);
+        log.info("url : " + "http://TRANSACTION-SERVICE/api/v1/paymentchain/transactions/" + iban);
         WebClient build = webClientBuilder.clientConnector(new ReactorClientHttpConnector(client))
-                .baseUrl("http://localhost:8082/api/v1/paymentchain/transactions")
+                .baseUrl("http://TRANSACTION-SERVICE/api/v1/paymentchain/transactions")
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();
         List<?> transactions = build.method(HttpMethod.GET).uri(uriBuilder ->  uriBuilder

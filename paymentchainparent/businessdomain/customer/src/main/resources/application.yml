@@ -1,5 +1,3 @@
-server:
-  port: 8081
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/microservicios02?serverTimezone=UTC&useSSL=false
@@ -13,10 +11,5 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
-  application:
-    name: CUSTOMER-SERVICE
-
-springdoc:
-  swagger-ui:
-    enabled: true
-    path: /swagger.html
+server:
+  port: 8081
